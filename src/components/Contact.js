@@ -23,10 +23,9 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 const db = getDatabase();
 
-
 const Contact = ({ contact, contactKey }) => {
   //TODO: destructuring dispatch from the context
-  const {dispatch} = useContext(ContactContext)
+  const { dispatch } = useContext(ContactContext);
   // history hooks to get history
   const history = useHistory();
 
@@ -44,9 +43,9 @@ const Contact = ({ contact, contactKey }) => {
 
     remove(ref(db, `/contacts/${contactKey}`))
       .then(() => {
-        toast("Deleted Successfully", {'type': 'warning'})
+        toast("Deleted Successfully", { type: "warning" });
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   };
 
   // update the star/important contact ,ie, star it or unstar the single contact
@@ -65,14 +64,14 @@ const Contact = ({ contact, contactKey }) => {
     //         .catch(err => console.log(err))
 
     update(ref(db, `/contacts/${contactKey}`), {
-      star: !contact.star
+      star: !contact.star,
     })
-    .then(() => {
-      toast("Contact Updated", {type: "info"})
-    })
-    .catch((error) => {
-      console.log(error)
-    });
+      .then(() => {
+        toast("Contact Updated", { type: "info" });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   // when the update icon/ pen ion is clicked
@@ -82,21 +81,21 @@ const Contact = ({ contact, contactKey }) => {
     dispatch({
       type: CONTACT_TO_UPDATE,
       payload: contact,
-      key: contactKey
-    })
+      key: contactKey,
+    });
     // and pushing to the add contact screen
     history.push("/contact/add");
   };
 
   // to view a single contact in the contact/view screen
-  const viewSingleContact = contact => {
+  const viewSingleContact = (contact) => {
     // setting single contact in state
     //TODO: use dispatch to view single contact
 
     dispatch({
       type: SET_SINGLE_CONTACT,
-      payload: contact
-    })
+      payload: contact,
+    });
 
     // sending...
     history.push("/contact/view");
@@ -127,9 +126,7 @@ const Contact = ({ contact, contactKey }) => {
           <div className="text-primary">{contact.name}</div>
 
           <div className="text-secondary">{contact.phoneNumber}</div>
-          <div className="text-secondary">
-            {contact.email}
-          </div>
+          <div className="text-secondary">{contact.email}</div>
 
           <div className="text-info">{contact.address}</div>
         </Col>

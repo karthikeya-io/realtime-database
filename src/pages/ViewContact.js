@@ -7,7 +7,7 @@ import {
   Card,
   CardBody,
   CardTitle,
-  CardSubtitle
+  CardSubtitle,
 } from "reactstrap";
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import { ContactContext } from "../context/Context";
@@ -18,7 +18,7 @@ const ViewContact = () => {
   // and rendering it in state
   //FIXME: destructure contact from state
 
-  const {contact} = state;
+  const { contact } = state;
 
   return (
     <Container>

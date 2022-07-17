@@ -2,4 +2,4 @@
 
 const { createContext } = require("react");
 
-export const ContactContext = createContext()
+export const ContactContext = createContext();
